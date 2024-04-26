@@ -66,7 +66,6 @@ public class ProductController {
 
     @GetMapping("/sell-product/{id}/{quantity}")
     public String sellProduct(@PathVariable int id, @PathVariable int quantity) {
-
         productService.sellProduct(id, quantity);
         return "redirect:/products";
     }
@@ -98,6 +97,7 @@ public class ProductController {
 
     /**
      * Эндпойнт для скачивания файла Order.xls
+     *
      * @return
      * @throws IOException
      */

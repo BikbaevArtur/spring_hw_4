@@ -38,12 +38,18 @@ public class ProductService {
 
     public void sellProduct(int id, int quantity) {
         Product product = findById(id);
+        if(quantity<0){
+            quantity=0;
+        }
         int balance = product.getBalance_in_stock() - quantity;
         product.setBalance_in_stock(balance);
         productRepository.save(product);
     }
 
     public void buyProduct(int id, int quantity) {
+        if(quantity<0){
+            quantity=0;
+        }
         Product product = findById(id);
         int balance = product.getBalance_in_stock() + quantity;
         product.setBalance_in_stock(balance);
