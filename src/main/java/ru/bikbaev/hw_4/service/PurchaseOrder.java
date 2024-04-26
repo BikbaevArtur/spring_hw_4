@@ -46,7 +46,7 @@ public class PurchaseOrder {
 
 
     public void createOrderXLSX(List<Order> orders) {
-        String url = "/Users/arturbikbaev/Desktop/java/spring_hw_4/src/main/resources/static/document/order.xls";
+        String url = "src/main/resources/static/document/order.xls";
         try (Workbook workbook = new HSSFWorkbook()) {
 
             Sheet sheet = workbook.createSheet();
