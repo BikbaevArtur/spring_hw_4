@@ -96,7 +96,11 @@ public class ProductController {
         return "orders";
     }
 
-
+    /**
+     * Эндпойнт для скачивания файла Order.xls
+     * @return
+     * @throws IOException
+     */
     @GetMapping("/download/order")
     public ResponseEntity<Resource> downloadOrder() throws IOException {
         String filePath = "/Users/arturbikbaev/Desktop/java/spring_hw_4/src/main/resources/static/document/order.xls";

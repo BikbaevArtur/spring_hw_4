@@ -19,6 +19,11 @@ import java.util.List;
 @Service
 public class PurchaseOrder {
 
+    /**
+     * Формирует список заявки для пополнения склада с учетом разницы между фактическим остатком и минимально допустимым
+     * @param products список товаров
+     * @return
+     */
 
     public List<Order> creatOrder(List<Product> products) {
         List<Order> orders = new ArrayList<>();
@@ -44,8 +49,12 @@ public class PurchaseOrder {
         return orders;
     }
 
-
-    public void createOrderXLSX(List<Order> orders) {
+    /**
+     * Формирует Exel файл  Order.xlx с сформированным списком заявок
+     * сохраняется в пути src/main/resources/static/document/order.xls
+     * @param orders список заявок на пополнения склада
+     */
+    public void createOrderXLS(List<Order> orders) {
         String url = "src/main/resources/static/document/order.xls";
         try (Workbook workbook = new HSSFWorkbook()) {
 

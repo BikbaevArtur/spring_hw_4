@@ -17,6 +17,7 @@ public class ProductService {
         this.purchaseOrder = purchaseOrder;
     }
 
+
     public void creatProduct(Product product) {
         productRepository.save(product);
     }
@@ -56,7 +57,7 @@ public class ProductService {
     }
 
     public void creat(List<Order>orders){
-        purchaseOrder.createOrderXLSX(orders);
+        purchaseOrder.createOrderXLS(orders);
     }
 
 
