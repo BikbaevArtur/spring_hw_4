@@ -1,23 +1,16 @@
 package ru.bikbaev.hw_4.controller;
 
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.bikbaev.hw_4.model.Order;
+
 import ru.bikbaev.hw_4.model.Product;
 import ru.bikbaev.hw_4.service.ProductService;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.util.List;
 
 @Controller
@@ -27,6 +20,11 @@ public class ProductController {
 
     public ProductController(ProductService productService) {
         this.productService = productService;
+    }
+
+    @GetMapping("/")
+    public String home(){
+        return "redirect:/products";
     }
 
     @GetMapping("/products")
@@ -87,38 +85,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("/orders")
-    public String order(Model model) {
-        List<Order> orders = productService.creatPurchaseOrder();
-        model.addAttribute("orders", orders);
-        productService.creat(orders);
-        return "orders";
-    }
 
-    /**
-     * Эндпойнт для скачивания файла Order.xls
-     *
-     * @return
-     * @throws IOException
-     */
-    @GetMapping("/download/order")
-    public ResponseEntity<Resource> downloadOrder() throws IOException {
-        String filePath = "/Users/arturbikbaev/Desktop/java/spring_hw_4/src/main/resources/static/document/order.xls";
-        Path path = Paths.get(filePath);
-
-        byte[] data = Files.readAllBytes(path);
-
-        ByteArrayResource resource = new ByteArrayResource(data);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        headers.setContentDispositionFormData("attachment", "order.xls");
-
-        return ResponseEntity.ok()
-                .headers(headers)
-                .contentLength(data.length)
-                .body(resource);
-    }
 
 
 }

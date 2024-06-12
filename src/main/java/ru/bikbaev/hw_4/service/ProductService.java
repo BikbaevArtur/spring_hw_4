@@ -2,7 +2,6 @@ package ru.bikbaev.hw_4.service;
 
 import org.springframework.stereotype.Service;
 import ru.bikbaev.hw_4.data.ProductRepository;
-import ru.bikbaev.hw_4.model.Order;
 import ru.bikbaev.hw_4.model.Product;
 
 import java.util.List;
@@ -10,13 +9,11 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
-    private final PurchaseOrder purchaseOrder;
 
-    public ProductService(ProductRepository productRepository, PurchaseOrder purchaseOrder) {
+
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
-        this.purchaseOrder = purchaseOrder;
     }
-
 
     public void creatProduct(Product product) {
         productRepository.save(product);
@@ -56,15 +53,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public List<Order> creatPurchaseOrder(){
-        List<Product>products = findAll();
-        return purchaseOrder.creatOrder(products);
 
-    }
-
-    public void creat(List<Order>orders){
-        purchaseOrder.createOrderXLS(orders);
-    }
 
 
 }

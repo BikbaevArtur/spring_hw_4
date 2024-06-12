@@ -1,8 +1,16 @@
 spring:
   application:
-    name:
-      spring_hw_4
+    name: product
+  datasource:
+    url: jdbc:mysql://localhost:3306/hw_9
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-    generate-ddl: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8081
