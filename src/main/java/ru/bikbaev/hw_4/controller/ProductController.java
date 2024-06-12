@@ -34,52 +34,52 @@ public class ProductController {
         return "products";
     }
 
-    @GetMapping("/product-create")
+    @GetMapping("/products/create")
     public String formProductCreat(Product product) {
         return "product-create";
     }
 
 
-    @PostMapping("/product-create")
+    @PostMapping("/products/create")
     public String productCreat(Product product) {
         productService.creatProduct(product);
-        return "redirect:products";
+        return "redirect:/products";
     }
 
-    @GetMapping("product-delete/{id}")
+    @GetMapping("/products/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         productService.deleteById(id);
         return "redirect:/products";
     }
 
-    @GetMapping("/sell-product/")
+    @GetMapping("/products/sell/")
     public String sellProductIdAndQuantityNull() {
         return "redirect:/products";
     }
 
-    @GetMapping("/sell-product/{id}/")
+    @GetMapping("/products/sell/{id}/")
     public String sellProductQuantityNull(@PathVariable int id) {
         return "redirect:/products";
     }
 
-    @GetMapping("/sell-product/{id}/{quantity}")
+    @GetMapping("/products/sell/{id}/{quantity}")
     public String sellProduct(@PathVariable int id, @PathVariable int quantity) {
         productService.sellProduct(id, quantity);
         return "redirect:/products";
     }
 
-    @GetMapping("/buy-product/{id}/{quantity}")
+    @GetMapping("/products/buy/{id}/{quantity}")
     public String buyProduct(@PathVariable int id, @PathVariable int quantity) {
         productService.buyProduct(id, quantity);
         return "redirect:/products";
     }
 
-    @GetMapping("/buy-product/")
+    @GetMapping("/products/buy/")
     public String buyProductIdAndQuantityNull() {
         return "redirect:/products";
     }
 
-    @GetMapping("/buy-product/{id}/")
+    @GetMapping("/products/buy/{id}/")
     public String buyProductQuantityNull(@PathVariable int id) {
         return "redirect:/products";
     }

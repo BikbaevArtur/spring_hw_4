@@ -41,7 +41,7 @@
                             var form = button.closest('form');
                             var id = form.querySelector('.product-id').value;
                             var quantity = form.querySelector('.quantity').value;
-                            var url = '/sell-product/' + id + '/' + quantity;
+                            var url = '/products/sell/' + id + '/' + quantity;
                             window.location.href = url;
                         }
                     </script>
@@ -62,7 +62,7 @@
                             var form = button.closest('form');
                             var id = form.querySelector('.product-id').value;
                             var quantity = form.querySelector('.quantity').value;
-                            var url = '/buy-product/' + id + '/' + quantity;
+                            var url = '/products/buy/' + id + '/' + quantity;
                             window.location.href = url;
                         }
                     </script>
@@ -78,7 +78,7 @@
                         function deleteProduct(button) {
                             var form = button.closest('form');
                             var id = form.querySelector('.delete').value; // Заменяем '.product-id' на '.delete'
-                            var url = '/product-delete/' + id ;
+                            var url = '/products/delete/' + id ;
                             window.location.href = url;
                         }
                     </script>
@@ -88,7 +88,7 @@
             </tbody>
         </table>
     </div>
-    <button  type="button" onclick="location.href='/product-create'" class="btn-new">Добавить новый продукт</button>
+    <button  type="button" onclick="location.href='/products/create'" class="btn-new">Добавить новый продукт</button>
 
     <div>
         <button  type="button" onclick="location.href='/orders'" class="btn-new">Сформировать заявку</button>
